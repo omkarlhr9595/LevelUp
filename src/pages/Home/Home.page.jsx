@@ -21,7 +21,7 @@ const Home = () => {
         className="h-96 p-0  transition-[filter_300ms] hover:drop-shadow-[0_0_2em_#646cffaa]"
         alt=""
       />
-      <h1 className="text-4xl text-white">One Place For All Your Gigs</h1>
+      {/* <h1 className="text-4xl text-white">One Place For All Your Gigs</h1> */}
     </div>
   );
 };

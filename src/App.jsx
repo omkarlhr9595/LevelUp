@@ -10,6 +10,5 @@ const App = () => {
   );
 };
 
-//commit
 
 export default App;

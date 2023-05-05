@@ -2,9 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
+@font-face {
+  font-family: "AbrilFatface";
+  src: url("../public/fonts/AbrilFatface-Regular.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
 
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

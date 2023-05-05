@@ -1,27 +1,60 @@
 import React, { useEffect, useRef } from "react";
-import reactLogo from "../../assets/react.svg";
-import logo from "../../assets/LevelUp-logos_white.png";
+import img1 from "../../assets/img2.jpg";
+import { gsap } from "gsap";
 import { Link } from "react-router-dom";
-import gsap from "gsap";
 const Home = () => {
-  const ref = useRef(null);
+  const container = useRef(null);
+  const img = useRef(null);
+  const links = useRef(null);
   useEffect(() => {
-    document.title = "Level Up | Home";
-    const tl = gsap.timeline({ repeat: -1, yoyo: true });
-    tl.to(ref.current, { scale: 1.1, duration: 0.5 }).to(ref.current, {
-      scale: 1,
-      duration: 0.5,
+    const t1 = gsap.timeline();
+    t1.set(container.current, { autoAlpha: 1 });
+    t1.from(container.current, {
+      xPercent: -100,
+      ease: "Power2.out",
+      duration: 1.5,
+    }).from(img.current, {
+      xPercent: 100,
+      scale: 1.3,
+      delay: -1.5,
+      ease: "Power2.out",
+      duration: 1.5,
     });
   }, []);
   return (
-    <div className="h-screen w-full bg-[#242424] flex flex-col justify-center items-center">
-      <img
-        ref={ref}
-        src={logo}
-        className="h-96 p-0  transition-[filter_300ms] hover:drop-shadow-[0_0_2em_#646cffaa]"
-        alt=""
-      />
-      {/* <h1 className="text-4xl text-white">One Place For All Your Gigs</h1> */}
+    <div className="h-screen w-full bg-[#f1e0c5]">
+      <div className="w-full h-28 grid place-items-center">
+        <div
+          ref={links}
+          className="w-[90%] h-[80%] bg-[#342a21] rounded-xl flex justify-evenly items-center"
+        >
+          <Link to="/">
+            <h1 className="font-bold text-white">Home</h1>
+          </Link>
+          <Link to="/">
+            <h1 className="font-bold text-white">Profile</h1>
+          </Link>
+          <Link to="/">
+            <h1 className="font-bold text-white">Login</h1>
+          </Link>
+          <Link to="/">
+            <h1 className="font-bold text-white">Register</h1>
+          </Link>
+        </div>
+      </div>
+      <div className="grid mt-4 place-items-center">
+        <div
+          ref={container}
+          className="w-[90%] aspect-square  overflow-hidden relative invisible"
+        >
+          <img
+            ref={img}
+            src={img1}
+            alt=""
+            className="origin-left object-cover"
+          />
+        </div>
+      </div>
     </div>
   );
 };

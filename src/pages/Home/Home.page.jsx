@@ -4,10 +4,13 @@ import logo from "../../assets/logo.png";
 import { Navbar, Button } from "flowbite-react";
 import { useMatch } from "react-router-dom";
 import { gsap } from "gsap";
+import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const tag = useRef(null);
   const button = useRef(null);
+  const navigate = useNavigate();
   useEffect(() => {
     const t1 = gsap.timeline();
     t1.fromTo(
@@ -31,11 +34,11 @@ const Home = () => {
     );
   }, []);
   return (
-    <div className="w-full bg-white border-t-black border border-t-2">
+    <div className="w-full bg-white border-y-black border border-y-2">
       <div className="bg-secondary w-full sm:h-96 aspect-video flex items-start flex-col justify-evenly  overflow-hidden">
         <h1
           ref={tag}
-          className="font-display text-4xl ml-10 sm:text-6xl sm:ml-10"
+          className="font-display text-4xl ml-10 sm:text-6xl leading-tight sm:ml-10"
         >
           "Streamline Your <br /> Freelancing Business <br />
           with Level Up"
@@ -44,7 +47,7 @@ const Home = () => {
           <Button
             ref={button}
             onClick={() => {
-              console.log("hello");
+              navigate("register");
             }}
             className="ml-10"
             color="dark"

@@ -22,12 +22,12 @@ const Splash = () => {
       slide.current,
       {
         y: "30%",
-        duration: 1.5,
+        duration: 1,
         ease: "power3.out",
       },
       {
         y: "0%",
-        duration: 1.5,
+        duration: 1,
         ease: "ease",
       }
     ).to(tag.current, {
@@ -36,10 +36,10 @@ const Splash = () => {
     });
   }, []);
   return (
-    <div className="h-screen w-full bg-[#fff] grid place-items-center overflow-hidden">
+    <div className="h-screen w-full bg-[#342a21] grid place-items-center overflow-hidden">
       <div
         ref={slide}
-        className="h-screen w-full bg-[#f1e0c5] grid place-items-center"
+        className="h-screen w-full bg-white grid place-items-center"
       >
         <div ref={tag} className="w-10/12 flex items-center justify-center">
           <h1 className="text-6xl text-black font-display">Level Up|</h1>

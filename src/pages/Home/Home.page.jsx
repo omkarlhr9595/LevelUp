@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import img1 from "../../assets/img2.jpg";
+import img1 from "../../assets/img1.svg";
 import { gsap } from "gsap";
 import { Link } from "react-router-dom";
 const Home = () => {
@@ -13,7 +13,8 @@ const Home = () => {
       xPercent: -100,
       ease: "Power2.out",
       duration: 1.5,
-    }).from(img.current, {
+    });
+    t1.from(img.current, {
       xPercent: 100,
       scale: 1.3,
       delay: -1.5,
@@ -34,7 +35,7 @@ const Home = () => {
           <Link to="/">
             <h1 className="font-bold text-white">Profile</h1>
           </Link>
-          <Link to="/">
+          <Link to="login">
             <h1 className="font-bold text-white">Login</h1>
           </Link>
           <Link to="/">
@@ -45,13 +46,13 @@ const Home = () => {
       <div className="grid mt-4 place-items-center">
         <div
           ref={container}
-          className="w-[90%] aspect-square  overflow-hidden relative invisible"
+          className="w-[90%] aspect-square grid place-items-center overflow-hidden relative invisible"
         >
           <img
             ref={img}
             src={img1}
             alt=""
-            className="origin-left object-cover"
+            className="origin-left h-[80%] bg-[#342a21]"
           />
         </div>
       </div>

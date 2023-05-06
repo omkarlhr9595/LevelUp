@@ -14,7 +14,7 @@ const Splash = () => {
   };
 
   useEffect(() => {
-    changeRoute();
+    // changeRoute();
   }, []);
   useEffect(() => {
     let t = gsap.timeline();
@@ -31,7 +31,8 @@ const Splash = () => {
         ease: "ease",
       }
     ).to(tag.current, {
-      opacity: 0,
+      yPercent: "-1000",
+      delay: 1,
       duration: 1,
     });
   }, []);

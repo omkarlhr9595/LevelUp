@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@barba/core": "^2.9.7",
+    "flowbite": "^1.6.5",
+    "flowbite-react": "^0.4.4",
     "gsap": "^3.11.5",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",

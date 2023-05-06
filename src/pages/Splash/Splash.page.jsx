@@ -2,6 +2,7 @@ import { gsap } from "gsap";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
+
 const Splash = () => {
   const slide = useRef(null);
   const tag = useRef(null);
@@ -16,34 +17,15 @@ const Splash = () => {
   useEffect(() => {
     // changeRoute();
   }, []);
-  useEffect(() => {
-    let t = gsap.timeline();
-    t.fromTo(
-      slide.current,
-      {
-        y: "30%",
-        duration: 1,
-        ease: "power3.out",
-      },
-      {
-        y: "0%",
-        duration: 1,
-        ease: "ease",
-      }
-    ).to(tag.current, {
-      yPercent: "-1000",
-      delay: 1,
-      duration: 1,
-    });
-  }, []);
+  useEffect(() => {}, []);
   return (
-    <div className="h-screen w-full bg-[#342a21] grid place-items-center overflow-hidden">
+    <div className="h-screen w-full  grid place-items-center overflow-hidden">
       <div
         ref={slide}
         className="h-screen w-full bg-white grid place-items-center"
       >
         <div ref={tag} className="w-10/12 flex items-center justify-center">
-          <h1 className="text-6xl text-black font-display">Level Up|</h1>
+          <h1 className="text-6xl  font-display">Level Up|</h1>
           <img src={logo} className="h-16" alt="" />
         </div>
       </div>

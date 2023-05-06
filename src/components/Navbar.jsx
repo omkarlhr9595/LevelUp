@@ -7,7 +7,7 @@ import { gsap } from "gsap";
 const LinkComp = ({ children, link }) => {
   return (
     <Link to={link}>
-      <div className="py-1 px-3 rounded-md hover:duration-300 hover:bg-primary hover:text-white">
+      <div className="py-2 px-3 rounded-md hover:duration-300 hover:bg-primary hover:text-white">
         {children}
       </div>
     </Link>

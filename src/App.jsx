@@ -3,7 +3,6 @@ import { Home, Profile, Login, Register } from "./pages";
 import { NavbarComp } from "./components/Navbar";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-
 const App = () => {
   return (
     <div className="">

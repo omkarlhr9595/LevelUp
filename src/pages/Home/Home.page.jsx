@@ -1,19 +1,19 @@
 import React, { useEffect, useRef } from "react";
 import img1 from "../../assets/img1.svg";
 import logo from "../../assets/logo.png";
-import { Navbar } from "flowbite-react";
+import { Navbar, Button } from "flowbite-react";
 import { useMatch } from "react-router-dom";
 import { gsap } from "gsap";
 
 const Home = () => {
   const tag = useRef(null);
+  const button = useRef(null);
   useEffect(() => {
     const t1 = gsap.timeline();
     t1.fromTo(
       tag.current,
       {
         y: 100,
-        opacity: 0,
       },
       {
         y: 0,
@@ -22,17 +22,36 @@ const Home = () => {
         duration: 2,
         ease: "power4.out",
       }
+    ).fromTo(
+      button.current,
+      {
+        y: 100,
+      },
+      { y: 0, duration: 2, ease: "bounce" }
     );
   }, []);
   return (
-    <div className="w-full bg-white">
-      <div className="w-full grid place-items-center">
-        <div className="w-[98%] h-72 rounded-lg bg-primary grid place-items-center">
-          <h1 ref={tag} className="text-white font-display text-4xl">
-            "Streamline Your
-            <br /> Freelancing Business
-            <br /> with Level Up"
-          </h1>
+    <div className="w-full bg-white border-t-black border border-t-2">
+      <div className="bg-secondary w-full sm:h-96 aspect-video flex items-start flex-col justify-evenly  overflow-hidden">
+        <h1
+          ref={tag}
+          className="font-display text-4xl ml-10 sm:text-6xl sm:ml-10"
+        >
+          "Streamline Your <br /> Freelancing Business <br />
+          with Level Up"
+        </h1>
+        <div>
+          <Button
+            ref={button}
+            onClick={() => {
+              console.log("hello");
+            }}
+            className="ml-10"
+            color="dark"
+            pill={true}
+          >
+            Get Started
+          </Button>
         </div>
       </div>
     </div>

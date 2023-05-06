@@ -26,9 +26,9 @@ export const NavbarComp = () => {
       <Navbar.Toggle />
       <Navbar.Collapse>
         <LinkComp link="/" children="Home" />
-        <LinkComp link="profile" children="Profile" />
-        <LinkComp link="login" children="Login" />
-        <LinkComp link="register" children="Register" />
+        <LinkComp link="profile" children="Be a creator" />
+        <LinkComp link="login" children="Find a gig" />
+        <LinkComp link="register" children="Find a freelancer" />
       </Navbar.Collapse>
     </Navbar>
   );

@@ -8,6 +8,7 @@ import { Formik, ErrorMessage } from "formik";
 import TextField from "../../components/TextField";
 import useSWR from "swr";
 import axios from "axios";
+import { useEffect } from "react";
 const registerSchema = yup.object().shape({
   firstname: yup.string().required("required"),
   lastname: yup.string().required("required"),
@@ -40,6 +41,15 @@ const Freelancer = () => {
   const navigate = useNavigate();
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
+  const [responseMessage, SetResponseMessage] = useState("");
+
+  useEffect(() => {
+    if (responseMessage != null) {
+      setTimeout(() => {
+        SetResponseMessage(null);
+      }, 4000);
+    }
+  }, [responseMessage]);
 
   const register = async (values, onSubmitProps) => {
     const body = {
@@ -59,7 +69,8 @@ const Freelancer = () => {
         }
       })
       .catch((error) => {
-        throw new Error(error.response.data.error);
+        SetResponseMessage(error.response.data.message);
+        throw new Error(error.response.data.message);
       });
   };
 
@@ -68,7 +79,6 @@ const Freelancer = () => {
       email: values.email,
       client_password: values.password,
     };
-
     try {
       const response = await axios.post(
         "http://localhost:3000/freelancer/login",
@@ -87,7 +97,8 @@ const Freelancer = () => {
         navigate("/home");
       }
     } catch (error) {
-      throw new Error(error.response.data.error);
+      SetResponseMessage(error.response.data.message);
+      console.log(error.response.data.message);
     }
   };
 
@@ -95,12 +106,16 @@ const Freelancer = () => {
     if (isLogin) await login(values, onSubmitProps);
     if (isRegister) await register(values, onSubmitProps);
   };
-  const scrollToDiv = (id) => {
-    const element = document.getElementById(id);
-    element.scrollIntoView({ behavior: "smooth" });
-  };
   return (
     <div className="w-[90%] sm:w-1/3">
+      {responseMessage && (
+        <div
+          class="absolute w-full grid place-items-center top-0 left-0 p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 slide-up"
+          role="alert"
+        >
+          <span class="font-medium">{responseMessage}</span>
+        </div>
+      )}
       <h1 className="text-center text-4xl font-display">
         {isLogin ? "LOGIN TO LEVEL UP" : "REGISTER TO LEVEL UP"}
       </h1>

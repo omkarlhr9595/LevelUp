@@ -8,6 +8,7 @@ export default {
   theme: {
     fontFamily: {
       display: ["Abril Fatface", "cursive"],
+      lable: ["Poppins", "cursive"],
     },
     extend: {
       colors: {

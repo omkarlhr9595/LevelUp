@@ -6,6 +6,8 @@ import { useMatch } from "react-router-dom";
 import { gsap } from "gsap";
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setLogout } from "../../state";
 
 const Home = () => {
   const tag = useRef(null);
@@ -33,8 +35,9 @@ const Home = () => {
       { y: 0, duration: 2, ease: "bounce" }
     );
   }, []);
+  const dispatch = useDispatch();
   return (
-    <div className="w-full bg-white border-y-black border border-y-2">
+    <div className="w-full bg-white border-y-black  border-y-2">
       <div className="bg-secondary w-full sm:h-96 aspect-video flex items-start flex-col justify-evenly  overflow-hidden">
         <h1
           ref={tag}
@@ -47,7 +50,7 @@ const Home = () => {
           <Button
             ref={button}
             onClick={() => {
-              navigate("register");
+              dispatch(setLogout());
             }}
             className="ml-10"
             color="dark"

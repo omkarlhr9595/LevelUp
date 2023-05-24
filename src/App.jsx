@@ -1,20 +1,32 @@
-import { Route, Router, Routes } from "react-router-dom";
-import { Home, Profile, Login, Register } from "./pages";
-import { NavbarComp } from "./components/Navbar";
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import {
+  BrowserRouter,
+  Navigate,
+  Routes,
+  Route,
+  HashRouter,
+} from "react-router-dom";
+import { Home, Auth, Register } from "./pages";
+import { useSelector } from "react-redux";
+
 const App = () => {
+  const isAuth = Boolean(useSelector((state) => state.token));
   return (
-    <div className="">
-      <NavbarComp />
-      <Routes>
-        <Route path="/" index element={<Home />} />
-        <Route path="/profile" index element={<Profile />} />
-        <Route path="/login" index element={<Login />} />
-        <Route path="/register" index element={<Register />} />
-      </Routes>
+    <div className="h-full">
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<Auth />} />
+          <Route
+            path="/home"
+            element={isAuth ? <Home /> : <Navigate to="/" />}
+          />
+        </Routes>
+      </HashRouter>
     </div>
   );
+};
+
+const Home1 = () => {
+  return <h1>hello</h1>;
 };
 
 export default App;

@@ -11,15 +11,27 @@
   },
   "dependencies": {
     "@barba/core": "^2.9.7",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.2",
+    "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^1.4.0",
+    "dotenv": "^16.0.3",
     "flowbite": "^1.6.5",
     "flowbite-react": "^0.4.4",
+    "formik": "^2.2.9",
     "gsap": "^3.11.5",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-full-page": "^0.1.12",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",
-    "sort-by": "^1.2.0"
+    "redux-persist": "^6.0.0",
+    "sort-by": "^1.2.0",
+    "swr": "^2.1.5",
+    "yup": "^1.1.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

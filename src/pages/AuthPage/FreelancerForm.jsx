@@ -9,6 +9,7 @@ import TextField from "../../components/TextField.jsx";
 // import { TextField } from "@mui/material";
 import axios from "axios";
 import { useEffect } from "react";
+import ErrorMessage from "../../components/ErrorMessage.jsx";
 
 const registerSchema = yup.object().shape({
   firstname: yup.string().required("required"),
@@ -108,18 +109,11 @@ const Freelancer = () => {
     if (isRegister) await register(values, onSubmitProps);
   };
   return (
-    <div className="w-[90%] mb-5 sm:w-1/2 border-dashed border-2 border-2-white bg-black px-20 py-10">
-      {responseMessage && (
-        <div
-          class="absolute w-full grid place-items-center top-24 left-0 p-2 text-sm text-white border-dashed border-b-2  bg-black dark:bg-gray-800 dark:text-red-400 slide-up"
-          role="alert"
-        >
-          <span class="font-medium">{responseMessage}</span>
-        </div>
-      )}
-      <h1 className="text-center text-4xl text-white font-lable">
+    <div className="w-[90%] my-5 sm:w-1/2 border-dashed border-2 border-2-white bg-black px-8 py-10 sm:px-20">
+      <h1 className="text-center sm:text-4xl text-3xl text-white font-lable">
         {isLogin ? "LOGIN TO AS FREELANCER" : "REGISTER AS FREELANCER"}
       </h1>
+      {responseMessage && <ErrorMessage message={responseMessage} />}
       <Formik
         onSubmit={handleFormSubmit}
         initialValues={isLogin ? initialValuesLogin : initialValuesRegister}

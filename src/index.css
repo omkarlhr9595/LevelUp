@@ -1,6 +1,6 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @font-face {
   font-family: "AbrilFatface";
@@ -9,3 +9,27 @@
   font-style: normal;
 }
 
+@layer components {
+  .single-child-center {
+    @apply grid place-items-center;
+  }
+
+  .custom-button {
+    @apply font-lable font-thin bg-[#ff90e8] border-2 border-black rounded-[0.25rem] py-[12px] px-[16px] transition-[0.2s] select-none;
+  }
+  .custom-button:hover {
+    @apply translate-x-[-0.25rem] translate-y-[-0.25rem] shadow-[0.25rem_0.25rem_0_#000];
+  }
+  .custom-button:active {
+    @apply translate-x-0 shadow-none;
+  }
+  .custom-button-white {
+    @apply font-lable min-w-[121px] font-thin bg-[#ff90e8] border-2 border-black rounded-[0.25rem] py-[12px] px-[16px] transition-[0.2s] select-none;
+  }
+  .custom-button-white:hover {
+    @apply translate-x-[-0.25rem] translate-y-[-0.25rem] shadow-[0.25rem_0.25rem_0_#fff] ;
+  }
+  .custom-button-white:active {
+    @apply translate-x-0 shadow-none;
+  }
+}

@@ -2,8 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
-import authreducer from "./state";
-import { configureStore } from "@reduxjs/toolkit";
+import { freelancerSlice } from "./state/freelancer.state.js";
+import { clientSlice } from "./state/client.state.js";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import {
   FLUSH,
@@ -19,7 +20,11 @@ import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
 
 const persistConfig = { key: "root", storage, version: 1 };
-const persistedReducer = persistReducer(persistConfig, authreducer);
+const rootReducer = combineReducers({
+  freelancer: freelancerSlice.reducer,
+  client: clientSlice.reducer,
+});
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,

@@ -47,7 +47,7 @@ const Home = () => {
         </div>
         <div className="flex-grow flex flex-col sm:flex-row">
           <div className="flex items-center justify-evenly h-1/2 w-full sm:h-full  bg-fuchsia border-b-2 border-b-black sm:border-r-2 sm:border-r-black">
-            <img src={people1} className="w-1/2 self-end" alt="" />
+            <img src={people1} className="w-[40%] self-end" alt="" />
             <button
               onClick={() => {
                 navigate("/freelancer");
@@ -66,7 +66,7 @@ const Home = () => {
             >
               I AM A CLIENT
             </button>
-            <img src={people2} className="w-1/2 self-end" alt="" />
+            <img src={people2} className="w-[40%] self-end" alt="" />
           </div>
         </div>
       </div>

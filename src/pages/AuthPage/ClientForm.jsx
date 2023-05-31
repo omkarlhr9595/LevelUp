@@ -9,6 +9,7 @@ import TextField from "../../components/TextField.jsx";
 // import { TextField } from "@mui/material";
 import axios from "axios";
 import { useEffect } from "react";
+import ErrorMessage from "../../components/ErrorMessage.jsx";
 
 const registerSchema = yup.object().shape({
   firstname: yup.string().required("required"),
@@ -108,16 +109,9 @@ const Client = () => {
     if (isRegister) await register(values, onSubmitProps);
   };
   return (
-    <div className="w-[90%] sm:w-1/3  border-dashed border-2 border-2-white bg-black px-20 py-10">
-      {responseMessage && (
-        <div
-          class="absolute w-full grid place-items-center top-44 left-0 p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 slide-up"
-          role="alert"
-        >
-          <span class="font-medium">{responseMessage}</span>
-        </div>
-      )}
-      <h1 className="text-center text-4xl text-white font-display">
+    <div className="w-[90%] my-5 sm:w-1/2 border-dashed border-2 border-2-white bg-black px-8 sm:px-20 py-10">
+      {responseMessage && <ErrorMessage message={responseMessage} />}
+      <h1 className="text-center sm:text-4xl text-3xl text-white font-lable">
         {isLogin ? "LOGIN TO AS CLIENT" : "REGISTER AS CLIENT"}
       </h1>
       <Formik
@@ -201,7 +195,7 @@ const Client = () => {
               {isLogin ? "Submit" : "Register"}
             </button>
             <p
-              className="font-lable select-none hover:cursor-pointer"
+              className="font-lable text-white select-none hover:cursor-pointer"
               onClick={() => {
                 setPageType(isLogin ? "register" : "login");
                 resetForm();

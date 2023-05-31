@@ -1,5 +1,4 @@
 import React from "react";
-
 function TextField({
   value,
   label,
@@ -26,7 +25,7 @@ function TextField({
       <input
         value={value}
         type="text"
-        className={`${baseStyles} focus:outline-none focus:border-none ${variantStyles} ${fullWidthStyles} ${
+        className={`${baseStyles} focus:outline-none focus:border-none ${variantStyles} ${fullWidthStyles}  ${
           error ? "border-red-500" : "border-black"
         }`}
         placeholder={label}

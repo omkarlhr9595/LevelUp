@@ -14,6 +14,7 @@ export default {
       colors: {
         primary: "#1a56db",
         secondary: "#ffc017",
+        fuchsia: "#ff90e8",
       },
     },
   },

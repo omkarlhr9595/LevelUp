@@ -10,24 +10,24 @@ function TextField({
   ...rest
 }) {
   const baseStyles =
-    "border focus:ring-1 focus:ring-blue-500 rounded-md py-4 px-3";
+    "border-2  focus:ring-2 focus:ring-[#ff90e8]   rounded-md py-4 px-3";
 
   let variantStyles = "";
   if (variant === "outlined") {
-    variantStyles = "border-gray-400";
+    variantStyles = "border-black";
   } else if (variant === "filled") {
-    variantStyles = "bg-gray-100";
+    variantStyles = "bg-black";
   }
 
   const fullWidthStyles = fullWidth ? "w-full" : "";
 
   return (
-    <div>
+    <div className="">
       <input
         value={value}
         type="text"
-        className={`${baseStyles} ${variantStyles} ${fullWidthStyles} ${
-          error ? "border-red-500" : "border-gray-300"
+        className={`${baseStyles} focus:outline-none focus:border-none ${variantStyles} ${fullWidthStyles} ${
+          error ? "border-red-500" : "border-black"
         }`}
         placeholder={label}
         {...rest}

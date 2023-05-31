@@ -1,14 +1,15 @@
-import { Label, TextInput, Checkbox, Button } from "flowbite-react";
+import { Button } from "flowbite-react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import state, { setLogin } from "../../state";
+import { useNavigate } from "react-router-dom";
+import { setLogin } from "../../state/freelancer.state.js";
 import * as yup from "yup";
-import { Formik, ErrorMessage } from "formik";
-import TextField from "../../components/TextField";
-import useSWR from "swr";
+import { Formik } from "formik";
+import TextField from "../../components/TextField.jsx";
+// import { TextField } from "@mui/material";
 import axios from "axios";
 import { useEffect } from "react";
+
 const registerSchema = yup.object().shape({
   firstname: yup.string().required("required"),
   lastname: yup.string().required("required"),
@@ -35,7 +36,7 @@ const initialValuesLogin = {
   password: "",
 };
 
-const Freelancer = () => {
+const Client = () => {
   const [pageType, setPageType] = useState("login");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -90,11 +91,11 @@ const Freelancer = () => {
       if (loggedIn) {
         dispatch(
           setLogin({
-            user: loggedIn.userdata,
+            data: loggedIn.userdata,
             token: loggedIn.accessToken,
           })
         );
-        navigate("/home");
+        navigate("/freelancer");
       }
     } catch (error) {
       SetResponseMessage(error.response.data.message);
@@ -107,17 +108,17 @@ const Freelancer = () => {
     if (isRegister) await register(values, onSubmitProps);
   };
   return (
-    <div className="w-[90%] sm:w-1/3">
+    <div className="w-[90%] sm:w-1/3  border-dashed border-2 border-2-white bg-black px-20 py-10">
       {responseMessage && (
         <div
-          class="absolute w-full grid place-items-center top-0 left-0 p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 slide-up"
+          class="absolute w-full grid place-items-center top-44 left-0 p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 slide-up"
           role="alert"
         >
           <span class="font-medium">{responseMessage}</span>
         </div>
       )}
-      <h1 className="text-center text-4xl font-display">
-        {isLogin ? "LOGIN TO LEVEL UP" : "REGISTER TO LEVEL UP"}
+      <h1 className="text-center text-4xl text-white font-display">
+        {isLogin ? "LOGIN TO AS CLIENT" : "REGISTER AS CLIENT"}
       </h1>
       <Formik
         onSubmit={handleFormSubmit}
@@ -196,9 +197,9 @@ const Freelancer = () => {
               error={Boolean(touched.password && errors.password)}
               helperText={touched.password && errors.password}
             />
-            <Button className="py-2" type="submit">
+            <button className="custom-button" type="submit">
               {isLogin ? "Submit" : "Register"}
-            </Button>
+            </button>
             <p
               className="font-lable select-none hover:cursor-pointer"
               onClick={() => {
@@ -217,4 +218,4 @@ const Freelancer = () => {
   );
 };
 
-export default Freelancer;
+export default Client;

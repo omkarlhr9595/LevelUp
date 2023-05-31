@@ -10,10 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@barba/core": "^2.9.7",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.13.2",
+    "@mui/material": "^5.13.3",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
     "dotenv": "^16.0.3",
@@ -30,7 +29,6 @@
     "react-router-dom": "^6.10.0",
     "redux-persist": "^6.0.0",
     "sort-by": "^1.2.0",
-    "swr": "^2.1.5",
     "yup": "^1.1.1"
   },
   "devDependencies": {

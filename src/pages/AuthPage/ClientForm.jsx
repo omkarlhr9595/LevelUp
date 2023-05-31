@@ -191,7 +191,7 @@ const Client = () => {
               error={Boolean(touched.password && errors.password)}
               helperText={touched.password && errors.password}
             />
-            <button className="custom-button" type="submit">
+            <button className="custom-button-white" type="submit">
               {isLogin ? "Submit" : "Register"}
             </button>
             <p

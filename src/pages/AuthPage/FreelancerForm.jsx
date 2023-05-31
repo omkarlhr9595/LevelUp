@@ -108,7 +108,7 @@ const Freelancer = () => {
     if (isRegister) await register(values, onSubmitProps);
   };
   return (
-    <div className="w-1/2 border-dashed border-2 border-2-white bg-black px-20 py-10">
+    <div className="w-[90%] mb-5 sm:w-1/2 border-dashed border-2 border-2-white bg-black px-20 py-10">
       {responseMessage && (
         <div
           class="absolute w-full grid place-items-center top-24 left-0 p-2 text-sm text-white border-dashed border-b-2  bg-black dark:bg-gray-800 dark:text-red-400 slide-up"

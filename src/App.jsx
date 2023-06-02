@@ -3,7 +3,7 @@ import { Home, Register, FreelancerAuth, ClientAuth } from "./pages";
 import { useSelector } from "react-redux";
 import FreelancerHome from "./pages/Freelancer/Freelancer.home";
 import ClientHome from "./pages/Client/Client.home";
-
+import { useEffect } from "react";
 const App = () => {
   const isFreelancerAuth = Boolean(
     useSelector((state) => state.freelancer.token)

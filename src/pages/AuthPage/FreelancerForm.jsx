@@ -10,7 +10,7 @@ import TextField from "../../components/TextField.jsx";
 import axios from "axios";
 import { useEffect } from "react";
 import ErrorMessage from "../../components/ErrorMessage.jsx";
-
+import { setLogout } from "../../state/client.state.js";
 const registerSchema = yup.object().shape({
   firstname: yup.string().required("required"),
   lastname: yup.string().required("required"),
@@ -96,6 +96,7 @@ const Freelancer = () => {
             token: loggedIn.accessToken,
           })
         );
+        dispatch(setLogout());
         navigate("/freelancer");
       }
     } catch (error) {

@@ -4,7 +4,7 @@ import { NavbarComp } from "../../components/Navbar";
 import { Button } from "flowbite-react";
 import { setLogout } from "../../state/freelancer.state.js";
 import { Navigate, useNavigate } from "react-router-dom";
-
+import InformationForm from "./InformationForm";
 const FreelancerHome = () => {
   const fname = useSelector((state) => state.freelancer.data.firstName);
   const lname = useSelector((state) => state.freelancer.data.lastName);
@@ -18,16 +18,13 @@ const FreelancerHome = () => {
         ) : (
           <div className="">
             <LogoDiv />
-            <div className="single-child-center h-24 w-full bg-secondary">
+            <div className="single-child-center  h-24 w-full bg-secondary">
               <h1 className="font-lable text-3xl">
                 WELCOME {fname.toUpperCase()} {lname.toUpperCase()}
               </h1>
             </div>
-
-            <div className="single-child-center h-24 w-full">
-              <h1 className="font-lable text-3xl text-white">
-                Please Fill Below Form
-              </h1>
+            <div className="single-child-center w-full">
+              <InformationForm />
             </div>
             <div className="single-child-center h-24 w-full">
               <button
@@ -50,7 +47,7 @@ export default FreelancerHome;
 const LogoDiv = () => {
   const navigate = useNavigate();
   return (
-    <div className="sticky top-0 z-10 flex h-24 w-full items-center justify-evenly border-b-2 border-b-black bg-gblack">
+    <div className=" z-10 flex h-24 w-full items-center justify-evenly border-b-2 border-b-black bg-gblack">
       <div className="z-10">
         <img
           src={logo}

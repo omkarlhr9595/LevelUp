@@ -1,12 +1,10 @@
-import { Button } from "flowbite-react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setLogin } from "../../state/freelancer.state.js";
 import * as yup from "yup";
 import { Formik } from "formik";
 import TextField from "../../components/TextField.jsx";
-// import { TextField } from "@mui/material";
 import axios from "axios";
 import { useEffect } from "react";
 import ErrorMessage from "../../components/ErrorMessage.jsx";
@@ -79,7 +77,7 @@ const Freelancer = () => {
   const login = async (values, onSubmitProps) => {
     const body = {
       email: values.email,
-      client_password: values.password,
+      freelancer_password: values.password,
     };
     try {
       const response = await axios.post(

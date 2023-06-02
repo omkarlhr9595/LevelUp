@@ -1,25 +1,9 @@
-import React, { useEffect, useRef } from "react";
-import { Navbar, Button } from "flowbite-react";
-import { useMatch } from "react-router-dom";
-import { gsap } from "gsap";
-import { Power3, Power4 } from "gsap/all";
-import { useCallback } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { setLogout } from "../../state/freelancer.state";
+import { useNavigate } from "react-router-dom";
 import people1 from "../../assets/people1.svg";
 import people2 from "../../assets/people2.svg";
 import logo from "../../assets/logo-text-black.png";
-import barba from "@barba/core";
 const Home = () => {
-  const tag = useRef(null);
-  const button = useRef(null);
   const navigate = useNavigate();
-
-  const dispatch = useDispatch();
-  const isFreelancerAuth = Boolean(
-    useSelector((state) => state.freelancer.token)
-  );
 
   return (
     <main
@@ -61,39 +45,3 @@ const Home = () => {
 };
 
 export default Home;
-
-const jsx = () => {
-  return (
-    <div className="flex h-96  w-full items-end justify-evenly border-b-2 border-b-black bg-secondary">
-      <img src={people1} className="" alt="" />
-      <div className="flex h-full flex-col items-center justify-evenly">
-        <h1
-          ref={tag}
-          className="ml-10 self-center font-display text-4xl leading-tight sm:ml-10 sm:text-6xl"
-        >
-          "Streamline Your <br /> Freelancing Business <br />
-          with Level Up"
-        </h1>
-        <div className="flex w-full items-center justify-around">
-          <button
-            onClick={() => {
-              navigate("/freelancer");
-            }}
-            className="custom-button self-center"
-          >
-            I AM A FREELANCER
-          </button>
-          <button
-            onClick={() => {
-              navigate("/client");
-            }}
-            className="custom-button self-center"
-          >
-            I AM A CLIENT
-          </button>
-        </div>
-      </div>
-      <img src={people2} className="" alt="" />
-    </div>
-  );
-};

@@ -20,6 +20,9 @@ body {
   .custom-button {
     @apply select-none rounded-[0.25rem] border-2 border-black bg-[#ff90e8] px-[16px] py-[12px] font-lable font-thin transition-[0.2s];
   }
+  .simple-button {
+    @apply select-none rounded-[0.25rem] border-2 border-black bg-[#ff90e8] px-[16px] py-[12px] font-lable font-thin transition-[0.2s];
+  }
   .custom-button:hover {
     @apply translate-x-[-0.25rem] translate-y-[-0.25rem] shadow-[0.25rem_0.25rem_0_#000];
   }

@@ -26,12 +26,12 @@ const AuthPage = () => {
   }, []);
   return (
     <main
-      className="min-h-screen flex flex-col"
+      className="flex min-h-screen flex-col"
       data-barba="container"
       data-barba-namespace="freelancerAuth"
     >
       <AuthNavbar />
-      <div className="w-full bg-[#242423] grow single-child-center ">
+      <div className="single-child-center w-full grow bg-[#242423] ">
         <FreelancerForm />
       </div>
     </main>

@@ -22,13 +22,17 @@ const Home = () => {
   );
 
   return (
-    <main data-barba="container" data-barba-namespace="home">
-      <div className="w-full h-screen flex flex-col">
-        <div className="h-40 sm:h-60 border-b-2 border-b-black flex items-center justify-center">
+    <main
+      data-barba="container"
+      data-barba-namespace="home"
+      className="bg-white"
+    >
+      <div className="flex h-screen w-full flex-col">
+        <div className="flex h-40 items-center justify-center border-b-2 border-b-black sm:h-60">
           <img src={logo} className="sm:h-[90%]" alt="" />
         </div>
-        <div className="flex-grow flex flex-col sm:flex-row">
-          <div className="flex items-center justify-evenly h-1/2 w-full sm:h-full  bg-fuchsia border-b-2 border-b-black sm:border-r-2 sm:border-r-black">
+        <div className="flex flex-grow flex-col sm:flex-row">
+          <div className="flex h-1/2 w-full items-center justify-evenly border-b-2  border-b-black bg-fuchsia sm:h-full sm:border-r-2 sm:border-r-black">
             <img src={people1} className="w-[40%] self-end" alt="" />
             <button
               onClick={() => {
@@ -39,7 +43,7 @@ const Home = () => {
               I AM A FREELANCER
             </button>
           </div>
-          <div className="flex items-center justify-evenly h-1/2 w-full sm:h-full bg-secondary  border-b-2 border-b-black">
+          <div className="flex h-1/2 w-full items-center justify-evenly border-b-2 border-b-black  bg-secondary sm:h-full">
             <button
               onClick={() => {
                 navigate("/client");
@@ -60,17 +64,17 @@ export default Home;
 
 const jsx = () => {
   return (
-    <div className="w-full border-b-2  border-b-black bg-secondary h-96 flex items-end justify-evenly">
+    <div className="flex h-96  w-full items-end justify-evenly border-b-2 border-b-black bg-secondary">
       <img src={people1} className="" alt="" />
-      <div className="h-full flex flex-col items-center justify-evenly">
+      <div className="flex h-full flex-col items-center justify-evenly">
         <h1
           ref={tag}
-          className="self-center font-display text-4xl ml-10 sm:text-6xl leading-tight sm:ml-10"
+          className="ml-10 self-center font-display text-4xl leading-tight sm:ml-10 sm:text-6xl"
         >
           "Streamline Your <br /> Freelancing Business <br />
           with Level Up"
         </h1>
-        <div className="w-full flex justify-around items-center">
+        <div className="flex w-full items-center justify-around">
           <button
             onClick={() => {
               navigate("/freelancer");

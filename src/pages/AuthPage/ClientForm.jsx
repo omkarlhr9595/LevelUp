@@ -111,9 +111,9 @@ const Client = () => {
     if (isRegister) await register(values, onSubmitProps);
   };
   return (
-    <div className="w-[90%] my-5 sm:w-1/2 border-dashed border-2 border-2-white bg-black px-8 sm:px-20 py-10">
+    <div className="border-2-white my-5 w-[90%] border-2 border-dashed bg-black px-8 py-10 sm:w-1/2 sm:px-20">
       {responseMessage && <ErrorMessage message={responseMessage} />}
-      <h1 className="text-center sm:text-4xl text-3xl text-white font-lable">
+      <h1 className="text-center font-lable text-3xl text-white sm:text-4xl">
         {isLogin ? "LOGIN TO AS CLIENT" : "REGISTER AS CLIENT"}
       </h1>
       <Formik
@@ -131,7 +131,7 @@ const Client = () => {
           setFieldValue,
           resetForm,
         }) => (
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-10">
+          <form onSubmit={handleSubmit} className="mt-10 flex flex-col gap-4">
             {isRegister && (
               <>
                 <TextField
@@ -197,7 +197,7 @@ const Client = () => {
               {isLogin ? "Submit" : "Register"}
             </button>
             <p
-              className="font-lable text-white select-none hover:cursor-pointer"
+              className="select-none font-lable text-white hover:cursor-pointer"
               onClick={() => {
                 setPageType(isLogin ? "register" : "login");
                 resetForm();

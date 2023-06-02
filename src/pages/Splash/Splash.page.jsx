@@ -19,13 +19,13 @@ const Splash = () => {
   }, []);
   useEffect(() => {}, []);
   return (
-    <div className="h-screen w-full  grid place-items-center overflow-hidden">
+    <div className="grid h-screen  w-full place-items-center overflow-hidden">
       <div
         ref={slide}
-        className="h-screen w-full bg-white grid place-items-center"
+        className="grid h-screen w-full place-items-center bg-white"
       >
-        <div ref={tag} className="w-10/12 flex items-center justify-center">
-          <h1 className="text-6xl  font-display">Level Up|</h1>
+        <div ref={tag} className="flex w-10/12 items-center justify-center">
+          <h1 className="font-display  text-6xl">Level Up|</h1>
           <img src={logo} className="h-16" alt="" />
         </div>
       </div>

@@ -5,11 +5,11 @@ const AuthNavbar = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="h-24 bg-gblack w-full border-b-2 border-b-white flex flex-col sm:flex-row items-center justify-evenly">
+      <div className="flex h-24 w-full flex-col items-center justify-evenly border-b-2 border-b-white bg-gblack sm:flex-row">
         <div className="">
           <img src={logo} className="h-16" alt="" />
         </div>
-        <div className="hidden flex-grow sm:flex justify-end">
+        <div className="hidden flex-grow justify-end sm:flex">
           <button
             onClick={() => {
               navigate("/", { replace: true });
@@ -36,7 +36,7 @@ const AuthNavbar = () => {
           </button>
         </div>
       </div>
-      <div className="sm:hidden flex justify-evenly items-center h-20 bg-gblack">
+      <div className="flex h-20 items-center justify-evenly bg-gblack sm:hidden">
         <button
           onClick={() => {
             navigate("/", { replace: true });
@@ -68,11 +68,11 @@ const AuthNavbar = () => {
 export default AuthNavbar;
 const jsx = () => {
   return (
-    <div className="flex items-center justify-evenly h-24 w-full border-b-2 border-b-white  bg-[#242423]">
+    <div className="flex h-24 w-full items-center justify-evenly border-b-2 border-b-white  bg-[#242423]">
       <div className="">
         <img src={logo} className=" h-16" alt="" />
       </div>
-      <div className="flex-grow flex justify-end">
+      <div className="flex flex-grow justify-end">
         <button
           onClick={() => {
             navigate("/", { replace: true });

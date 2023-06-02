@@ -4,6 +4,7 @@ const initialState = {
   data: null,
   token: null,
   posts: null,
+  information: null,
 };
 
 export const freelancerSlice = createSlice({
@@ -24,8 +25,12 @@ export const freelancerSlice = createSlice({
       });
       state.posts = updatedPosts;
     },
+    setInformation: (state, action) => {
+      state.information = action.payload.information;
+    },
   },
 });
 
-export const { setLogin, setLogout, setPost } = freelancerSlice.actions;
+export const { setLogin, setLogout, setPost, setInformation } =
+  freelancerSlice.actions;
 export default freelancerSlice.reducer;

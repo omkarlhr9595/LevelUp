@@ -27,9 +27,15 @@
     @apply font-lable min-w-[121px] font-thin bg-[#ff90e8] border-2 border-black rounded-[0.25rem] py-[12px] px-[16px] transition-[0.2s] select-none;
   }
   .custom-button-white:hover {
-    @apply translate-x-[-0.25rem] translate-y-[-0.25rem] shadow-[0.25rem_0.25rem_0_#fff] ;
+    @apply translate-x-[-0.25rem] translate-y-[-0.25rem] shadow-[0.25rem_0.25rem_0_#fff];
   }
   .custom-button-white:active {
     @apply translate-x-0 shadow-none;
+  }
+  .load-container {
+    @apply fixed w-full h-screen overflow-hidden z-10 pointer-events-none left-0 top-0;
+  }
+  .load-screen {
+    @apply relative bg-gblack w-[0%] h-full pt-0 px-0;
   }
 }

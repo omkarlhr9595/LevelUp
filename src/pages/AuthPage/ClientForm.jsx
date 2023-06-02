@@ -2,7 +2,7 @@ import { Button } from "flowbite-react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setLogin } from "../../state/freelancer.state.js";
+import { setLogin } from "../../state/client.state.js";
 import * as yup from "yup";
 import { Formik } from "formik";
 import TextField from "../../components/TextField.jsx";
@@ -10,6 +10,7 @@ import TextField from "../../components/TextField.jsx";
 import axios from "axios";
 import { useEffect } from "react";
 import ErrorMessage from "../../components/ErrorMessage.jsx";
+import { setLogout } from "../../state/freelancer.state.js";
 
 const registerSchema = yup.object().shape({
   firstname: yup.string().required("required"),
@@ -62,7 +63,7 @@ const Client = () => {
       state: values.state,
     };
     axios
-      .post("http://localhost:3000/freelancer/register", body)
+      .post("http://localhost:3000/client/register", body)
       .then((response) => {
         const savedUser = response.data;
         onSubmitProps.resetForm();
@@ -83,7 +84,7 @@ const Client = () => {
     };
     try {
       const response = await axios.post(
-        "http://localhost:3000/freelancer/login",
+        "http://localhost:3000/client/login",
         body
       );
       const loggedIn = response.data;
@@ -96,7 +97,8 @@ const Client = () => {
             token: loggedIn.accessToken,
           })
         );
-        navigate("/freelancer");
+        dispatch(setLogout());
+        navigate("/client");
       }
     } catch (error) {
       SetResponseMessage(error.response.data.message);

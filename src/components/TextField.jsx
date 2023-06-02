@@ -25,13 +25,13 @@ function TextField({
       <input
         value={value}
         type="text"
-        className={`${baseStyles} focus:outline-none focus:border-none ${variantStyles} ${fullWidthStyles}  ${
+        className={`${baseStyles} focus:border-none focus:outline-none ${variantStyles} ${fullWidthStyles}  ${
           error ? "border-red-500" : "border-black"
         }`}
         placeholder={label}
         {...rest}
       />
-      {error && <p className="text-red-500 text-xs mt-1 ml-3">{helperText}</p>}
+      {error && <p className="ml-3 mt-1 text-xs text-red-500">{helperText}</p>}
     </div>
   );
 }

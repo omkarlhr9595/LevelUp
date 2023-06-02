@@ -2,12 +2,12 @@ import { Label, TextInput, Checkbox, Button } from "flowbite-react";
 
 const Register = () => {
   return (
-    <div className="w-full h-[60vh] grid place-items-center">
+    <div className="grid h-[60vh] w-full place-items-center">
       <div className="w-[90%] sm:w-1/3">
-        <h1 className="text-center text-4xl font-display">
+        <h1 className="text-center font-display text-4xl">
           REGISTER TO LEVEL UP
         </h1>
-        <form className="flex flex-col gap-4 mt-10">
+        <form className="mt-10 flex flex-col gap-4">
           <div>
             <div className="mb-2 block">
               <Label htmlFor="email2" value="Your email" />

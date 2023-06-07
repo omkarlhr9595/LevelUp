@@ -85,13 +85,13 @@ const Freelancer = () => {
         body
       );
       const loggedIn = response.data;
-
       onSubmitProps.resetForm();
       if (loggedIn) {
         dispatch(
           setLogin({
             data: loggedIn.userdata,
             token: loggedIn.accessToken,
+            information: loggedIn.information,
           })
         );
         dispatch(setLogout());

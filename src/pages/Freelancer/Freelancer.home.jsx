@@ -1,20 +1,55 @@
 import logo from "../../assets/logo-text-white.png";
 import { useDispatch, useSelector } from "react-redux";
-import { NavbarComp } from "../../components/Navbar";
 import { Button } from "flowbite-react";
 import { setLogout } from "../../state/freelancer.state.js";
 import { Navigate, useNavigate } from "react-router-dom";
 import InformationForm from "./InformationForm";
+import FreelancerProfile from "./Freelancer.Profile.jsx";
+import FreelancerContent from "./Freelancer.Content";
+import FreelancerJobs from "./Freelancer.Jobs";
+import ContentForm from "./Content.Form";
+import AuthNavbar from "../../components/AuthNavbar";
+
 const FreelancerHome = () => {
-  const fname = useSelector((state) => state.freelancer.data.firstName);
-  const lname = useSelector((state) => state.freelancer.data.lastName);
+  const data = useSelector((state) => state.freelancer.data);
   const information = useSelector((state) => state.freelancer.information);
+  const freelancerData = {
+    fname: data.firstName,
+    lname: data.lastName,
+    state: data.state,
+    email: data.email,
+    profilePhoto: information.profilePhoto,
+    skills: information.skills,
+    budget: information.budget,
+    headline: information.headline,
+    scope: information.scope,
+  };
+
+  const { fname, lname } = freelancerData;
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <>
-      <div className="min-h-screen w-full bg-gblack">
+      <div className="min-h-screen w-full  bg-gblack">
         {information ? (
-          <div className="h-screen w-full bg-gblack"></div>
+          <div className="flex min-h-screen w-full flex-col">
+            <div className="w-full flex-grow">
+              <Navbar />
+            </div>
+            <div className="flex h-[85vh] w-full bg-gblack">
+              <div className="h-full w-1/5 px-2">
+                <FreelancerProfile data={freelancerData} />
+              </div>
+              <div className="h-full w-[60%]  px-2">
+                <ContentForm />
+                <FreelancerContent />
+              </div>
+              <div className="h-full w-1/5 px-2">
+                <FreelancerJobs />
+              </div>
+            </div>
+          </div>
         ) : (
           <div className="">
             <LogoDiv />
@@ -62,20 +97,52 @@ const LogoDiv = () => {
   );
 };
 
-const jsx = () => {
+const Navbar = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
-    <div className="flex h-screen w-full flex-col items-center justify-center">
-      <h1 className="mb-10 text-4xl">
-        WELCOME {fname.toUpperCase()} {lname.toUpperCase()}
-      </h1>
-      <button
-        className="custom-button"
-        onClick={() => {
-          dispatch(setLogout());
-        }}
-      >
-        Log Out
-      </button>
-    </div>
+    <>
+      <div className="flex h-24 w-full flex-col items-center justify-evenly border-b-2 border-b-white bg-gblack sm:flex-row">
+        <div className="">
+          <img src={logo} className="h-16" alt="" />
+        </div>
+        <div className="hidden flex-grow justify-end sm:flex">
+          <button
+            onClick={() => {
+              navigate("/", { replace: true });
+            }}
+            className="custom-button-white mr-10"
+          >
+            Home
+          </button>
+          <button
+            onClick={() => {
+              dispatch(setLogout());
+            }}
+            className="custom-button-white mr-10"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+      <div className="flex h-20 items-center justify-evenly bg-gblack sm:hidden">
+        <button
+          onClick={() => {
+            navigate("/", { replace: true });
+          }}
+          className="custom-button-white mr-10"
+        >
+          Home
+        </button>
+        <button
+          onClick={() => {
+            dispatch(setLogout());
+          }}
+          className="custom-button-white mr-10"
+        >
+          Logout
+        </button>
+      </div>
+    </>
   );
 };

@@ -1,29 +1,59 @@
 import * as yup from "yup";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import TextField from "../../components/TextField";
-const informationSchema = yup.object().shape({
-  headline: yup.string().required("Headline is required"),
-  skills: yup
-    .array()
-    .min(1, "Skills must have at least 1 item")
-    .required("Skills are required"),
-  scope: yup.string().required("Scope is required"),
-  budget: yup.number().required("Budget is required"),
-});
-const initialValues = {
-  headline: "",
-  skills: [],
-  scope: "",
-  budget: 0,
-};
-const handleFormSubmit = (values) => {
-  // Handle the form submission, e.g., make an API request to update the FreelancerInformation
-  console.table(values);
-};
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setInformation } from "../../state/freelancer.state";
+
 const InformationForm = () => {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.freelancer.token);
+  const informationSchema = yup.object().shape({
+    headline: yup.string().required("Headline is required"),
+    skills: yup
+      .array()
+      .min(1, "Skills must have at least 1 item")
+      .required("Skills are required"),
+    scope: yup.string().required("Scope is required"),
+    budget: yup.number().required("Budget is required"),
+    profilePhoto: yup.mixed().required("Profile Photo is required"),
+  });
+  const initialValues = {
+    headline: "",
+    skills: [],
+    scope: "",
+    budget: "",
+    profilePhoto: null,
+  };
+  const handleFormSubmit = async (values, onSubmitProps) => {
+    const formData = new FormData();
+    formData.append("profilePhoto", values.profilePhoto);
+    formData.append("budget", values.budget);
+    formData.append("headline", values.headline);
+    formData.append("scope", values.scope);
+    formData.append("skills", values.skills);
+    try {
+      const response = await axios.patch(
+        "http://localhost:3000/freelancer/information",
+        formData,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const information = response.data;
+      dispatch(
+        setInformation({
+          information: information.data,
+        })
+      );
+      onSubmitProps.resetForm();
+    } catch (e) {}
+  };
   return (
-    <div className="border-2-white my-5 w-[90%] border-2 border-dashed bg-black px-8 py-10 sm:w-1/2 sm:px-20">
-      <h1 className="text-center font-lable text-3xl text-white sm:text-4xl">
+    <div className="border-2-white my-5 w-[90%] border-2 border-dashed bg-ablack px-8 py-10 sm:w-1/2 sm:px-20">
+      <h1 className="text-center font-lable text-3xl text-awhite sm:text-4xl">
         Please fill information form
       </h1>
       <Formik
@@ -38,9 +68,21 @@ const InformationForm = () => {
           handleBlur,
           handleChange,
           handleSubmit,
+          setFieldValue,
           resetForm,
         }) => (
           <form onSubmit={handleSubmit} className="mt-10 flex flex-col gap-4">
+            <input
+              type="file"
+              name="profilePhoto"
+              accept="image/png, image/gif, image/jpeg"
+              id="profilePhoto"
+              className="text-white"
+              multiple={false}
+              onChange={(event) => {
+                setFieldValue("profilePhoto", event.currentTarget.files[0]);
+              }}
+            />
             <TextField
               value={values.headline}
               label="Headline of your profile"
@@ -105,7 +147,7 @@ const InformationForm = () => {
                   ))}
                   <button
                     type="button"
-                    className="simple-button mt-4"
+                    className="simple-button "
                     onClick={() => arrayHelpers.push("")}
                   >
                     Add Skill

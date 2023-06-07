@@ -16,6 +16,8 @@ export default {
         secondary: "#ffc017",
         fuchsia: "#ff90e8",
         gblack: "#242423",
+        ablack: "#1d1d1f",
+        awhite: "#f5f5f7",
       },
     },
   },

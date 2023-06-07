@@ -14,10 +14,12 @@ export const freelancerSlice = createSlice({
     setLogin: (state, action) => {
       state.data = action.payload.data;
       state.token = action.payload.token;
+      state.information = action.payload.information;
     },
     setLogout: (state) => {
       state.data = null;
       state.token = null;
+      state.information = null;
     },
     setPost: (state, action) => {
       const updatedPosts = state.posts.map((post) => {

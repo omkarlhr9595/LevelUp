@@ -9,8 +9,14 @@ import FreelancerContent from "./Freelancer.Content";
 import FreelancerJobs from "./Freelancer.Jobs";
 import ContentForm from "./Content.Form";
 import AuthNavbar from "../../components/AuthNavbar";
+import axios from "axios";
+import { useEffect } from "react";
 
 const FreelancerHome = () => {
+  useEffect(() => {
+    getContent();
+  });
+
   const data = useSelector((state) => state.freelancer.data);
   const information = useSelector((state) => state.freelancer.information);
   const freelancerData = {
@@ -23,6 +29,17 @@ const FreelancerHome = () => {
     budget: information.budget,
     headline: information.headline,
     scope: information.scope,
+  };
+
+  const getContent = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3000/freelancer/content"
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const { fname, lname } = freelancerData;

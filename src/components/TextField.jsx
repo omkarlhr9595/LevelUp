@@ -6,6 +6,7 @@ function TextField({
   fullWidth,
   error,
   helperText,
+  textarea,
   ...rest
 }) {
   const baseStyles =
@@ -22,15 +23,28 @@ function TextField({
 
   return (
     <div className="">
-      <input
-        value={value}
-        type="text"
-        className={`${baseStyles} focus:border-none focus:outline-none ${variantStyles} ${fullWidthStyles}  ${
-          error ? "border-red-500" : "border-black"
-        }`}
-        placeholder={label}
-        {...rest}
-      />
+      {textarea ? (
+        <textarea
+          value={value}
+          placeholder={label}
+          rows="3"
+          className={`${baseStyles} focus:border-none focus:outline-none ${variantStyles} ${fullWidthStyles}  ${
+            error ? "border-red-500" : "border-black"
+          }`}
+          {...rest}
+        ></textarea>
+      ) : (
+        <input
+          value={value}
+          type="text"
+          className={`${baseStyles} focus:border-none focus:outline-none ${variantStyles} ${fullWidthStyles}  ${
+            error ? "border-red-500" : "border-black"
+          }`}
+          placeholder={label}
+          {...rest}
+        />
+      )}
+
       {error && <p className="ml-3 mt-1 text-xs text-red-500">{helperText}</p>}
     </div>
   );

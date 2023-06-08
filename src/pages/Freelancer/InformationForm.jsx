@@ -77,6 +77,7 @@ const InformationForm = () => {
               name="profilePhoto"
               accept="image/png, image/gif, image/jpeg"
               id="profilePhoto"
+              required
               className="text-white"
               multiple={false}
               onChange={(event) => {

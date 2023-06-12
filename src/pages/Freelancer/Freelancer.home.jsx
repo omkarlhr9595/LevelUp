@@ -13,10 +13,6 @@ import axios from "axios";
 import { useEffect } from "react";
 
 const FreelancerHome = () => {
-  useEffect(() => {
-    getContent();
-  });
-
   const data = useSelector((state) => state.freelancer.data);
   const information = useSelector((state) => state.freelancer.information);
   const freelancerData = {
@@ -29,17 +25,6 @@ const FreelancerHome = () => {
     budget: information.budget,
     headline: information.headline,
     scope: information.scope,
-  };
-
-  const getContent = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:3000/freelancer/content"
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   const { fname, lname } = freelancerData;
@@ -58,7 +43,7 @@ const FreelancerHome = () => {
               <div className="h-full w-1/5 px-2">
                 <FreelancerProfile data={freelancerData} />
               </div>
-              <div className="h-full w-[60%]  px-2">
+              <div className="h-full w-[60%] overflow-auto px-2">
                 <ContentForm />
                 <FreelancerContent />
               </div>

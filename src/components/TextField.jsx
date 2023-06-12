@@ -27,7 +27,7 @@ function TextField({
         <textarea
           value={value}
           placeholder={label}
-          rows="3"
+          rows="1"
           className={`${baseStyles} focus:border-none focus:outline-none ${variantStyles} ${fullWidthStyles}  ${
             error ? "border-red-500" : "border-black"
           }`}

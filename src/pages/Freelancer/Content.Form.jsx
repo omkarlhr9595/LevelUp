@@ -34,6 +34,7 @@ const ContentForm = () => {
         }
       );
       const information = response.data;
+      document.location.reload();
       onSubmitProps.resetForm();
     } catch (e) {
       console.log(e);

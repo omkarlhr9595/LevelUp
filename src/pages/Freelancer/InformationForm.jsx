@@ -17,6 +17,10 @@ const InformationForm = () => {
     scope: yup.string().required("Scope is required"),
     budget: yup.number().required("Budget is required"),
     profilePhoto: yup.mixed().required("Profile Photo is required"),
+    whatsappNo: yup
+      .string()
+      .matches(/^\d{10}$/, "Mobile number must be a 10-digit number")
+      .required("Whatsapp Number is required"),
   });
   const initialValues = {
     headline: "",
@@ -32,6 +36,7 @@ const InformationForm = () => {
     formData.append("headline", values.headline);
     formData.append("scope", values.scope);
     formData.append("skills", values.skills);
+    formData.append("whatsappNo", values.whatsappNo);
     try {
       const response = await axios.patch(
         "http://localhost:3000/freelancer/information",
@@ -119,6 +124,19 @@ const InformationForm = () => {
               fullWidth
               error={Boolean(touched.budget && errors.budget)}
               helperText={touched.budget && errors.budget}
+            />
+
+            <TextField
+              value={values.whatsappNo}
+              label="Your WhatsApp Number"
+              onBlur={handleBlur}
+              type="tel"
+              onChange={handleChange}
+              name="whatsappNo"
+              variant="outlined"
+              fullWidth
+              error={Boolean(touched.whatsappNo && errors.whatsappNo)}
+              helperText={touched.whatsappNo && errors.whatsappNo}
             />
 
             <FieldArray

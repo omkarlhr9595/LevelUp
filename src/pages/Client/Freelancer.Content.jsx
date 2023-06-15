@@ -3,8 +3,8 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 const FreelancerContent = () => {
-  const token = useSelector((state) => state.freelancer.token);
-  const userId = useSelector((state) => state.freelancer.information.user_id);
+  const token = useSelector((state) => state.client.token);
+  const userId = useSelector((state) => state.client.data._id);
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     axios
@@ -20,7 +20,7 @@ const FreelancerContent = () => {
   const handleLike = (postId) => {
     axios
       .patch(
-        `http://localhost:3000/freelancer/content/${postId}/like`,
+        `http://localhost:3000/client/content/${postId}/like`,
         {
           userId,
         },
@@ -45,7 +45,7 @@ const FreelancerContent = () => {
   };
 
   return (
-    <div className="my-5 border-2 border-dashed bg-black p-5">
+    <div className="border-2 border-dashed bg-black p-5">
       <h2 className="mb-4 font-lable text-lg font-semibold text-white ">
         Content by freelancers
       </h2>
@@ -120,7 +120,6 @@ const Post = ({ post, handleLike, userId }) => {
           </p>
         </div>
       </div>
-     
     </div>
   );
 };

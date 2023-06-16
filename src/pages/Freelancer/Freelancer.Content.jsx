@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import moment from "moment";
 const FreelancerContent = () => {
   const token = useSelector((state) => state.freelancer.token);
   const userId = useSelector((state) => state.freelancer.information.user_id);
@@ -72,9 +73,12 @@ const Post = ({ post, handleLike, userId }) => {
   const truncatedWords = words.slice(0, 75);
   const truncatedString = truncatedWords.join(" ");
   function convertToReadableDate(dateString) {
-    const date = new Date(dateString);
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    return date.toLocaleDateString(undefined, options);
+    const date = moment(dateString);
+    if (date.isValid()) {
+      return date.format("MMMM DD, YYYY");
+    } else {
+      return ""; // Return an empty string if the date is invalid
+    }
   }
   return (
     <div className="mb-4 flex rounded-lg border-2 bg-ablack p-4 shadow-md">
@@ -120,7 +124,6 @@ const Post = ({ post, handleLike, userId }) => {
           </p>
         </div>
       </div>
-     
     </div>
   );
 };

@@ -6,6 +6,9 @@ import axios from "axios";
 const ContentForm = () => {
   const token = useSelector((state) => state.freelancer.token);
   const user_id = useSelector((state) => state.freelancer.information.user_id);
+  const whatsappNo = useSelector(
+    (state) => state.freelancer.information.whatsappNo
+  );
   const contentSchema = yup.object().shape({
     title: yup.string().required("Title is required"),
     content: yup.string().required("Content is required"),
@@ -23,6 +26,7 @@ const ContentForm = () => {
     formData.append("user_id", user_id);
     formData.append("content", values.content);
     formData.append("image", values.photo);
+    formData.append("whatsappNo", whatsappNo);
     try {
       const response = await axios.post(
         "http://localhost:3000/freelancer/content",

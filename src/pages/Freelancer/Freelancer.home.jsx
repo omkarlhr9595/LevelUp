@@ -47,7 +47,7 @@ const FreelancerHome = () => {
                 <ContentForm />
                 <FreelancerContent />
               </div>
-              <div className="h-full w-1/5 px-2">
+              <div className="h-full w-1/5 px-2 overflow-auto">
                 <FreelancerJobs />
               </div>
             </div>

@@ -21,5 +21,5 @@ export default {
       },
     },
   },
-  plugins: [require("flowbite/plugin"), require("prettier-plugin-tailwindcss")],
+  plugins: [ require("prettier-plugin-tailwindcss")],
 };

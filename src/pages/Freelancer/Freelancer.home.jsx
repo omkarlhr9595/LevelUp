@@ -1,6 +1,5 @@
 import logo from "../../assets/logo-text-white.png";
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "flowbite-react";
 import { setLogout } from "../../state/freelancer.state.js";
 import { Navigate, useNavigate } from "react-router-dom";
 import InformationForm from "./InformationForm";

@@ -144,7 +144,8 @@ const Job = ({ job, userId }) => {
       currency: currency,
       name: "LEVEL UP",
       description: "PAY FREELANCER",
-      image: { logo },
+      image:
+        "https://raw.githubusercontent.com/omkarlhr9595/LevelUp/main/src/assets/logo.png",
       order_id: order_id,
       handler: async function (response) {
         // const data = {

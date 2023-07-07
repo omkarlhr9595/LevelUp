@@ -3,7 +3,10 @@ import { Home, FreelancerAuth, ClientAuth } from "./pages";
 import { useSelector } from "react-redux";
 import FreelancerHome from "./pages/Freelancer/Freelancer.home";
 import ClientHome from "./pages/Client/Client.home";
+// import dotenv from "dotenv";
+// require("dotenv").config();
 const App = () => {
+  // dotenv.config();
   const isFreelancerAuth = Boolean(
     useSelector((state) => state.freelancer.token)
   );

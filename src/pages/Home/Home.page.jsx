@@ -23,7 +23,7 @@ const Home = () => {
     });
     revealAnimation.fromTo(
       typedRef.current,
-      { opacity: 1, x: -100 },
+      { opacity: 1, x: -90 },
       { opacity: 1, x: 0, duration: 1 }
     );
     fetchFreelancerCount();
@@ -150,7 +150,11 @@ const Home = () => {
         </div>
         <div className="flex flex-grow flex-col sm:flex-row">
           <div className="flex h-1/2 w-full items-center justify-evenly border-b-2  border-b-black bg-fuchsia sm:h-full sm:border-r-2 sm:border-r-black">
-            <img src={people1} className="w-[40%] self-end" alt="" />
+            <img
+              src={people2}
+              className="w-[40%] -scale-x-100 self-end"
+              alt=""
+            />
             <button
               onClick={() => {
                 navigate("/freelancer");
@@ -169,7 +173,11 @@ const Home = () => {
             >
               I AM A CLIENT
             </button>
-            <img src={people2} className="w-[40%] self-end" alt="" />
+            <img
+              src={people1}
+              className=" w-[40%] -scale-x-100 self-end"
+              alt=""
+            />
           </div>
         </div>
       </div>
@@ -192,7 +200,7 @@ const Card = (props) => {
   const { color, text } = props;
   return (
     <div
-      className={`single-child-center aspect-video w-80 rounded bg-${color} border-2 border-black`}
+      className={`single-child-center aspect-video w-80 rounded shadow-[0_14px_28px_rgba(0,0,0,0.25),0_10px_10px_rgba(0,0,0,0.22)] bg-${color} border-2 border-black`}
     >
       <h1
         className="text-center text-2xl"

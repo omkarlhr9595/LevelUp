@@ -103,6 +103,77 @@ const Job = ({ job, userId }) => {
 
     fetchWhatsAppNumbers();
   }, [applicant]);
+
+  function loadScript(src) {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  }
+
+  async function displayRazorpay() {
+    const res = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
+
+    if (!res) {
+      alert("Razorpay SDK failed to load. Are you online?");
+      return;
+    }
+
+    // creating a new order
+    const result = await axios.post("http://localhost:3000/client/orders");
+
+    if (!result) {
+      alert("Server error. Are you online?");
+      return;
+    }
+
+    // Getting the order details back
+    const { amount, id: order_id, currency } = result.data;
+    const options = {
+      key: import.meta.env.RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
+      amount: amount,
+      currency: currency,
+      name: "LEVEL UP",
+      description: "PAY FREELANCER",
+      image: { logo },
+      order_id: order_id,
+      handler: async function (response) {
+        // const data = {
+        //   orderCreationId: order_id,
+        //   razorpayPaymentId: response.razorpay_payment_id,
+        //   razorpayOrderId: response.razorpay_order_id,
+        //   razorpaySignature: response.razorpay_signature,
+        // };
+        // const result = await axios.post(
+        //   "http://localhost:5000/payment/success",
+        //   data
+        // );
+      },
+      prefill: {
+        name: "VSN",
+        email: "VSN@imcc.com",
+        contact: "9999999999",
+      },
+      notes: {
+        address: "IMCC COLLEGE PUNE",
+      },
+      theme: {
+        color: "#1a56db",
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  }
   return (
     <div className="mb-4  rounded-lg border-2 bg-ablack p-4 shadow-md">
       <div className="flex items-center justify-between">
@@ -128,7 +199,10 @@ const Job = ({ job, userId }) => {
           {whatsappNumbers.length > 0 && (
             <div className="">
               {whatsappNumbers.map((number, index) => (
-                <div className="flex mt-3 items-center justify-evenly">
+                <div
+                  key={index}
+                  className="mt-3 flex items-center justify-evenly"
+                >
                   <h2 key={index} className="text-base text-awhite">
                     {names[index]}
                   </h2>
@@ -139,6 +213,12 @@ const Job = ({ job, userId }) => {
                   >
                     <img className="h-10" alt="Chat on WhatsApp" src={logo} />
                   </a>
+                  <button
+                    className="custom-button-white"
+                    onClick={displayRazorpay}
+                  >
+                    PAY FREELANCER
+                  </button>
                 </div>
               ))}
             </div>
